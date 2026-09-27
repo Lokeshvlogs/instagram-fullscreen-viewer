@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram Fullscreen Viewer — features &amp; plans</title>
+  <meta name="description" content="A Firefox extension to view Instagram posts and reels full screen: zoom, tile strip, slideshow, image filters and curves. Free 1-month trial.">
+  <meta name="theme-color" content="#0d0a14">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#features">Skip to features</a>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#top">
+      <img src="icon.svg" alt="" width="32" height="32">
+      <span>Fullscreen Viewer</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#filters">Filters</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-account" id="navAccount">
+      <button type="button" class="btn btn-ghost" id="navSignIn">Sign in</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: animated background and a live mock of the viewer. -->
+    <section class="hero">
+      <canvas id="mesh" aria-hidden="true"></canvas>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Firefox extension</p>
+        <h1>Instagram,<br><span class="gradient-text">full screen.</span></h1>
+        <p class="lead">Ctrl+click any post or reel to open it edge to edge. Zoom, flip through a whole profile, run a slideshow and fine-tune every photo with filters and curves.</p>
+        <div class="cta">
+          <a class="btn btn-primary" id="addToFirefox" href="#">Add to Firefox — free</a>
+          <a class="btn btn-ghost" href="#pricing">See plans</a>
+        </div>
+        <p class="small muted">Free to use · Premium features free for 1 month · Not affiliated with Meta or Instagram</p>
+      </div>
+
+      <div class="device reveal" aria-hidden="true">
+        <div class="device-bar"><span></span><span></span><span></span><div class="url">instagram.com/someone</div></div>
+        <div class="device-screen" id="heroScreen">
+          <div class="mock-grid" id="heroGrid"></div>
+          <div class="mock-viewer" id="heroViewer">
+            <img src="demo.svg" alt="">
+            <div class="mock-poster"><i></i><b>@sunset.lake</b></div>
+            <div class="mock-dots"><i class="on"></i><i></i><i></i></div>
+            <div class="mock-strip" id="heroStrip"></div>
+          </div>
+          <div class="mock-cursor" id="heroCursor"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features: each scene animates when it scrolls into view. -->
+    <section id="features" class="features">
+      <h2 class="section-title reveal">Everything you wished Instagram's viewer did</h2>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">Viewer</span>
+          <h3>Full screen, zoom and rotate</h3>
+          <p>Ctrl+click opens the post edge to edge. The wheel or a touchpad pinch zooms right where you point; drag to look around; arrow keys rotate.</p>
+        </div>
+        <div class="demo demo-zoom"><img src="demo.svg" alt=""><span class="lens"></span></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">Tiles</span>
+          <h3>A tile strip you can dock anywhere</h3>
+          <p>Every post of the page at a glance. Drag it to any edge, or expand it into a grid of thumbnails and resize it to taste.</p>
+        </div>
+        <div class="demo demo-dock"><img src="demo.svg" alt=""><div class="dock-strip"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip premium">Premium</span>
+          <h3>Slideshow</h3>
+          <p>Sit back: images change on a timer you choose, reels play to the end, and multi-image posts show every photo.</p>
+        </div>
+        <div class="demo demo-slides"><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""><span class="progress"></span></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">Reels</span>
+          <h3>Reels, the Reels feed and Explore</h3>
+          <p>Works on profiles, Saved posts, Explore, search, hashtags and the Reels feed — with sound, a seek bar, and next/previous.</p>
+        </div>
+        <div class="demo demo-reels"><div class="phone"><div class="reel-track"><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""></div><span class="play">▶</span></div></div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">Profiles</span>
+          <h3>The poster's whole profile, one hover away</h3>
+          <p>Hover the poster to see their bio, links, counts and all their posts. Click one to browse that profile without leaving the viewer.</p>
+        </div>
+        <div class="demo demo-profile">
+          <div class="profile-card">
+            <div class="profile-head"><i></i><div><b>@sunset.lake</b><small>12.4K followers · 184 posts</small></div></div>
+            <div class="profile-grid"><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">History</span>
+          <h3>Back and Forward, like a browser</h3>
+          <p>Jumped to another profile? One click takes you back to the photo you came from — and forward again. The last 20 things you viewed are a click away.</p>
+        </div>
+        <div class="demo demo-history">
+          <div class="pill"><span class="arrow">‹</span><img src="demo.svg" alt=""><img src="demo.svg" alt=""><span class="arrow">›</span></div>
+          <div class="history-cards"><img src="demo.svg" alt=""><img src="demo.svg" alt=""><img src="demo.svg" alt=""></div>
+        </div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="feature-text">
+          <span class="chip">Save</span>
+          <h3>Save to Instagram, download for yourself</h3>
+          <p>Bookmark a post to your Instagram collection, or keep a personal copy of a photo or reel — with your filters applied, if you like.</p>
+        </div>
+        <div class="demo demo-save">
+          <span class="save-btn bookmark"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-5-6 5z"/></svg></span>
+          <span class="save-btn download"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg><svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="19"/></svg></span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Interactive filter demo. -->
+    <section id="filters" class="filters">
+      <div class="filters-copy reveal">
+        <span class="chip premium">Premium</span>
+        <h2 class="section-title">Filters &amp; curves, live</h2>
+        <p>Presets, sliders and a real tone curve — applied to the photo as you move them. Try it:</p>
+      </div>
+      <div class="filter-lab reveal">
+        <div class="lab-image">
+          <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+            <filter id="labCurve" color-interpolation-filters="sRGB">
+              <feComponentTransfer>
+                <feFuncR type="table" id="curveR" tableValues="0 1"/>
+                <feFuncG type="table" id="curveG" tableValues="0 1"/>
+                <feFuncB type="table" id="curveB" tableValues="0 1"/>
+              </feComponentTransfer>
+            </filter>
+          </svg>
+          <img id="labImg" src="demo.svg" alt="A sunset over a lake, with your filter settings applied">
+          <div class="vignette" id="labVignette"></div>
+          <span class="compare-hint">Hold to compare</span>
+        </div>
+        <div class="lab-controls">
+          <div class="presets" id="labPresets" role="group" aria-label="Presets"></div>
+          <label>Exposure <input type="range" id="labBright" min="50" max="160" value="100"></label>
+          <label>Contrast <input type="range" id="labContrast" min="50" max="170" value="100"></label>
+          <label>Saturation <input type="range" id="labSat" min="0" max="220" value="100"></label>
+          <label>Warmth <input type="range" id="labWarm" min="-100" max="100" value="0"></label>
+          <label>Vignette <input type="range" id="labVig" min="0" max="100" value="0"></label>
+          <div class="curve-box">
+            <span>Tone curve — drag the point</span>
+            <svg id="labCurveEditor" viewBox="0 0 100 100" role="img" aria-label="Tone curve">
+              <path class="grid" d="M25 0V100M50 0V100M75 0V100M0 25H100M0 50H100M0 75H100"/>
+              <path class="diag" d="M0 100L100 0"/>
+              <path class="line" id="labCurvePath" d="M0 100L100 0"/>
+              <circle class="handle" id="labCurveHandle" cx="50" cy="50" r="5"/>
+            </svg>
+          </div>
+          <button type="button" class="btn btn-ghost small-btn" id="labReset">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing and checkout. -->
+    <section id="pricing" class="pricing">
+      <h2 class="section-title reveal">Simple plans</h2>
+      <p class="pricing-lead reveal">Everything is free except <b>Slideshow</b> and <b>Image filters</b>. Sign in with Google in the extension and they're yours free for <b>1 month</b>. After that:</p>
+      <div class="toggle reveal" role="group" aria-label="Price display">
+        <button type="button" class="on" data-show="total">Price per plan</button>
+        <button type="button" data-show="monthly">Per month</button>
+      </div>
+      <div class="plans" id="plans"></div>
+      <p class="small muted center reveal">Renews automatically · cancel any time · works on up to 3 devices · payments by Stripe</p>
+
+      <div class="account reveal" id="account" hidden>
+        <div class="account-who"><span id="accountEmail"></span><button type="button" class="link-btn" id="signOut">Sign out</button></div>
+        <div class="account-status" id="accountStatus"></div>
+        <button type="button" class="btn btn-ghost" id="manage" hidden>Manage subscription</button>
+      </div>
+      <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2 class="section-title reveal">Questions</h2>
+      <details class="reveal"><summary>What's free, and what's Premium?</summary><p>Viewing full screen, zoom, rotation, the tile strip, reels, profiles, Back/Forward, Save to Instagram and downloading originals are free. Slideshow and Image filters (presets, curves, auto enhance, filtered downloads) are Premium.</p></details>
+      <details class="reveal"><summary>How does the free trial work?</summary><p>Sign in with Google in the extension (or here). Premium is free for 30 days from your first sign-in — no card needed.</p></details>
+      <details class="reveal"><summary>How many devices can I use?</summary><p>Up to 3 browsers per Google account. You can remove old ones in the extension's control panel.</p></details>
+      <details class="reveal"><summary>How do I cancel?</summary><p>Sign in here or open the extension's control panel and choose <i>Manage subscription</i>. You keep Premium until the end of the period you paid for.</p></details>
+      <details class="reveal"><summary>What do you store about me?</summary><p>Your Google email and a label for each device (like "Firefox on Windows"). Payments are handled by Stripe; we never see card details. Nothing about what you view on Instagram is sent anywhere.</p></details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="disclaimer" id="disclaimer"></p>
+    <p class="small muted">"Instagram" is a trademark of Meta Platforms, Inc., used only to describe what the extension works with. © <span id="year"></span> Instagram Fullscreen Viewer.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
