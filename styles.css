@@ -303,3 +303,7 @@ html.no-motion { scroll-behavior: auto; }
 html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; transition: none !important; }
 html.no-motion .reveal { opacity: 1; transform: none; }
 html.no-motion .demo-slides img:first-child, html.no-motion .profile-grid img { opacity: 1; transform: none; }
+
+/* The longer name in the header: keep it on one line, smaller on phones. */
+.brand span { white-space: nowrap; }
+@media (max-width: 480px) { .brand span { font-size: 14px; } .brand img { width: 26px; height: 26px; } }

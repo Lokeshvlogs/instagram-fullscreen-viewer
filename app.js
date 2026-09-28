@@ -1,4 +1,4 @@
-// Instagram Fullscreen Viewer — features & plans site.
+// Fullscreen Viewer for Instagram — features & plans site.
 // Animations and the filter demo are plain JS; sign-in and checkout use Supabase (the same account
 // as the extension) and the extension's Supabase functions.
 import {
