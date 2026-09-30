@@ -97,7 +97,7 @@ async function heroLoop() {
   const anim = (el, frames, options) => el.animate(frames, { fill: "forwards", easing: "cubic-bezier(.2,.8,.2,1)", ...options }).finished;
 
   for (;;) {
-    // 1. The cursor moves to a tile and Ctrl+clicks it.
+    // 1. The cursor moves to a tile and clicks its ⛶ button.
     const s = screen.getBoundingClientRect();
     const t = target.getBoundingClientRect();
     const tx = ((t.left + t.width / 2 - s.left) / s.width) * 100;
